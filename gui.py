@@ -103,8 +103,7 @@ def CreateWindow():
     window.mainloop()
 
 
-print(hasher.call_sha384('секиро'))
-print(hasher.call_sha512('секиро'))
+print(hasher.call_md5('секиро'))
 CreateWindow()
 
 
