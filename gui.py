@@ -103,7 +103,7 @@ def CreateWindow():
     window.mainloop()
 
 
-print(hasher.call_whirlpool('seciro'))
+print(hasher.call_crc32('her'))
 CreateWindow()
 
 
