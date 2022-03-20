@@ -1,5 +1,6 @@
 import sha
 import md5
+import whirlpool
 
 def call_sha1(str):
     return sha.call_sha1(str)
@@ -21,3 +22,6 @@ def call_sha512(str):
 def call_md5(str):
     s = md5.call_md5(str)
     return s[0:32]
+
+def call_whirlpool(str):
+    return whirlpool.call_whirlpool(str)
