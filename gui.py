@@ -1,5 +1,7 @@
 from tkinter import *
 from tkinter.ttk import Combobox
+import hasher
+
 #------------------GUI----------------------
 def place(elem, x, y):
     elem.place(relx=x,rely=y)
@@ -101,4 +103,8 @@ def CreateWindow():
     window.mainloop()
 
 
+print(hasher.call_sha384('секиро'))
+print(hasher.call_sha512('секиро'))
 CreateWindow()
+
+
