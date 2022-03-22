@@ -12,10 +12,6 @@ def init_data():
     data2 = [line.strip() for line in open("data/data2.txt", 'r')]
     data.append(data1)
     data.append(data2)
-    
-
-my_thread = threading.Thread(target=init_data)
-my_thread.start()
 
 
 def get_data():
@@ -83,6 +79,8 @@ def gener_variants(size):
     text_file = open(path, "w")
     text_file.write(s)
     text_file.close()
+
+    
     
 
 
