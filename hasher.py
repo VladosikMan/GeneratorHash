@@ -36,7 +36,7 @@ def call_adler32(str):
     s =  adler32.call_adler32(str)
     if len(s) != 8:
          s = "0" + s
-    return s
+    return s.lower()
 def call_crc32(stre):
     s = crc32.call_crc32(stre)
     ss = str(s)
@@ -44,7 +44,7 @@ def call_crc32(stre):
         ss = ss[:2] + "0" + ss[2:]
 
     ss = ss[2:]
-    return ss
+    return ss.lower()
 
 
 

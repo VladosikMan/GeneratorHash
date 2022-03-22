@@ -15,7 +15,8 @@ def CreateWindow():
     window = Tk()
     #---------------func---------------------------
     def check(x, ans, data):
-        #получить значение проверяемого
+        #получить значение проверяемого\
+        print(ans)
         trust = ""
         if x == 1 :
             trust  = hasher.call_sha1(data)
@@ -45,8 +46,9 @@ def CreateWindow():
 
         if x == 10 :
             trust  = hasher.call_crc32(data)
-        
-        txt_trust.delete(1.0,"")
+
+        print(trust)
+        txt_trust.delete(1.0,"end")
         txt_trust.insert("end", trust)
         if trust == ans:
             return True
@@ -170,11 +172,8 @@ def CreateWindow():
  
     window.mainloop()
 
-print(hasher.call_crc32("Genius is one percent inspiration and ninety-nine percent perspiration"))
 my_thread = threading.Thread(target=generator.init_data)
 my_thread.start()
-
-#print(hasher.call_crc32('her'))
 CreateWindow()
 
 

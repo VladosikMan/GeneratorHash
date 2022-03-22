@@ -116,6 +116,10 @@ def start_md5(message):
     return md5_to_hex(md5(enc_message))
 
 def call_md5(str):
-    return start_md5(str)
+    import hashlib
+    b = bytes(str, 'utf-8')
+    h = hashlib.new("md5")
+    h.update(b)
+    return h.hexdigest()
 
 
