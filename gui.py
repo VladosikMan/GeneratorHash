@@ -5,12 +5,55 @@ import time
 import generator
 import threading
 
+
+    
+
 #------------------GUI----------------------
 def place(elem, x, y):
     elem.place(relx=x,rely=y)
 def CreateWindow():   
     window = Tk()
     #---------------func---------------------------
+    def check(x, ans, data):
+        #получить значение проверяемого
+        trust = ""
+        if x == 1 :
+            trust  = hasher.call_sha1(data)
+        if x == 2 :
+            trust  = hasher.call_sha224(data)
+        
+        if x == 3 :
+            trust  = hasher.call_sha256(data)
+        
+        if x == 4 :
+            trust  = hasher.call_sha384(data)
+        
+        if x == 5 :
+            trust  = hasher.call_sha512(data)
+        
+        if x == 6 :
+            trust  = hasher.call_md5(data)
+        
+        if x == 7 :
+            trust  = hasher.call_whirlpool(data)
+        
+        if x == 8 :
+            trust  = hasher.call_ripemd160(data)
+        
+        if x == 9 :
+            trust  = hasher.call_adler32(data)
+
+        if x == 10 :
+            trust  = hasher.call_crc32(data)
+        
+        txt_trust.delete(1.0,"end")
+        txt_trust.insert("end", trust)
+        if trust == ans:
+            return True
+        else:
+            return False
+
+    
     def gener_var():
         #генерация вариантов
         que = en_que_var.get()
@@ -19,13 +62,24 @@ def CreateWindow():
             if x >100 or x<1:
                 raise Exception
             generator.gener_variants(x)
+            label_gener_func.config(text='Сгенерировано')
         except ValueError:
             label_gener_func.config(text='Ошибка ввода')
         except Exception:
             label_gener_func.config(text='Ошибка ввода')
+
+            
     def check_ans():
-        print()
+        #проверка варинтов
+        x = combo_hash.current()
+        flag = check(x+1, txt_ans.get("1.0","end-1c"), en_data.get())
+        if flag == True:
+            label_check_func.config(text='Правильно')
+        else:
+            label_check_func.config(text='Не правильно')
     
+
+
     #---------------init elements-----------
     #string_Gen = StringVar()
     #string_Gen.set("What should I learn")
@@ -69,9 +123,8 @@ def CreateWindow():
                                     "md5",
                                     "Whirlpool",
                                     "ripemd160",
-                                    "Whirlpool",
                                     "adler32 ",
-                                    "crc32"])
+                                    "crc32b"])
     place(combo_hash, 0.3, 0.37)
     combo_hash.current(0)
 
@@ -114,11 +167,12 @@ def CreateWindow():
  
     window.mainloop()
 
-
+print(hasher.call_sha512("Научитесь говорить “Я не знаю”, и это уже будет прогресс"))
 my_thread = threading.Thread(target=generator.init_data)
 my_thread.start()
 
 #print(hasher.call_crc32('her'))
 CreateWindow()
+
 
 
