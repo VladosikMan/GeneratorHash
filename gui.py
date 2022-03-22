@@ -1,6 +1,9 @@
 from tkinter import *
 from tkinter.ttk import Combobox
 import hasher
+import time
+import generator
+import threading
 
 #------------------GUI----------------------
 def place(elem, x, y):
@@ -9,8 +12,17 @@ def CreateWindow():
     window = Tk()
     #---------------func---------------------------
     def gener_var():
-        print()
-
+        #генерация вариантов
+        que = en_que_var.get()
+        try:
+            x = int (que)
+            if x >100 or x<1:
+                raise Exception
+            generator.gener_variants(x)
+        except ValueError:
+            label_gener_func.config(text='Ошибка ввода')
+        except Exception:
+            label_gener_func.config(text='Ошибка ввода')
     def check_ans():
         print()
     
@@ -21,18 +33,19 @@ def CreateWindow():
     label_gener = Label(text="Сгенерировать варианты")
     place(label_gener, 0.05, 0.01)
     
-    label_que_var = Label(text="Количество вариантов")
+    label_que_var = Label(text="Количество вариантов (1-100)")
     place(label_que_var, 0.05, 0.07)
 
     en_que_var = Entry(window,width=10)
-    place(en_que_var,  0.4, 0.072)
+    place(en_que_var,  0.45, 0.072)
     
     
     label_gener_func = Label(text="Функ строка")
     place(label_gener_func, 0.05, 0.15)
 
+
     btn_gen_var= Button(window, text="Сгенерировать", command = gener_var)
-    place(btn_gen_var, 0.35, 0.15)
+    place(btn_gen_var, 0.4, 0.15)
 
 
 
@@ -99,11 +112,13 @@ def CreateWindow():
     window.title("GenerHash")
     window.geometry('450x520')
  
-
     window.mainloop()
 
 
-print(hasher.call_crc32('her'))
+my_thread = threading.Thread(target=generator.init_data)
+my_thread.start()
+
+#print(hasher.call_crc32('her'))
 CreateWindow()
 
 
