@@ -42,6 +42,8 @@ def call_crc32(stre):
     ss = str(s)
     if len(s)!=10:
         ss = ss[:2] + "0" + ss[2:]
+
+    ss = ss[2:]
     return ss
 
 

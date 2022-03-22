@@ -46,7 +46,7 @@ def CreateWindow():
         if x == 10 :
             trust  = hasher.call_crc32(data)
         
-        txt_trust.delete(1.0,"end")
+        txt_trust.delete(1.0,"")
         txt_trust.insert("end", trust)
         if trust == ans:
             return True
@@ -148,6 +148,7 @@ def CreateWindow():
 
     txt_ans = Text(window, height = 5, width = 24)
     place(txt_ans,  0.05,0.65)
+    
 
     txt_trust = Text(window, height = 5, width = 24)
     place(txt_trust,  0.52,0.65)
@@ -158,16 +159,18 @@ def CreateWindow():
 
     label_check_func = Label(text="Функ строка")
     place(label_check_func, 0.05, 0.91)
+
+
+    window.event_add('<<Paste>>', '<Control-igrave>')
+    window.event_add("<<Copy>>", "<Control-ntilde>")
     
-
-
     window.resizable(width=False, height=False)
     window.title("GenerHash")
     window.geometry('450x520')
  
     window.mainloop()
 
-print(hasher.call_sha512("Научитесь говорить “Я не знаю”, и это уже будет прогресс"))
+print(hasher.call_crc32("Genius is one percent inspiration and ninety-nine percent perspiration"))
 my_thread = threading.Thread(target=generator.init_data)
 my_thread.start()
 
