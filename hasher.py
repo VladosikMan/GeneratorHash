@@ -5,6 +5,7 @@ import ripemd160
 import adler32
 import crc32
 import blake2
+import base65
 
 def call_sha1(str):
     return sha.call_sha1(str)
@@ -49,5 +50,11 @@ def call_crc32(stre):
 
 def call_blake2(str):
     return blake2.call_blake2(str)
+
+def call_base64(str):
+    h = base65.call_base64(str)
+    ss = h[2:len(h)-1]
+    return ss
+    
 
 

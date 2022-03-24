@@ -50,7 +50,10 @@ def CreateWindow():
         if x == 11 :
             trust  = hasher.call_blake2(data)
 
-        print(trust)
+        if x == 12 :
+            trust  = hasher.call_base64(data)
+
+       
         txt_trust.delete(1.0,"end")
         txt_trust.insert("end", trust)
         if trust == ans:
@@ -130,7 +133,8 @@ def CreateWindow():
                                     "ripemd160",
                                     "adler32 ",
                                     "crc32b",
-                                    "blake2b"])
+                                    "blake2b",
+                                    "base64"])
     place(combo_hash, 0.3, 0.37)
     combo_hash.current(0)
 
