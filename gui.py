@@ -47,6 +47,9 @@ def CreateWindow():
         if x == 10 :
             trust  = hasher.call_crc32(data)
 
+        if x == 11 :
+            trust  = hasher.call_blake2(data)
+
         print(trust)
         txt_trust.delete(1.0,"end")
         txt_trust.insert("end", trust)
@@ -126,7 +129,8 @@ def CreateWindow():
                                     "Whirlpool",
                                     "ripemd160",
                                     "adler32 ",
-                                    "crc32b"])
+                                    "crc32b",
+                                    "blake2b"])
     place(combo_hash, 0.3, 0.37)
     combo_hash.current(0)
 

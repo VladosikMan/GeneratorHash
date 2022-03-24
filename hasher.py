@@ -4,6 +4,7 @@ import whirlpool
 import ripemd160
 import adler32
 import crc32
+import blake2
 
 def call_sha1(str):
     return sha.call_sha1(str)
@@ -46,5 +47,7 @@ def call_crc32(stre):
     ss = ss[2:]
     return ss.lower()
 
+def call_blake2(str):
+    return blake2.call_blake2(str)
 
 
